@@ -1,4 +1,5 @@
 import { globalObj } from '../global';
+
 import {
     createNode,
     addClass,
@@ -166,6 +167,7 @@ export const createBTSModal = (api, createMainContainer) => {
         const sTitleData = section.title,
             sDescriptionData = section.description,
             sLinkedCategory = section.linkedCategory,
+            sImage = section.image,
             sCurrentCategoryObject =
         sLinkedCategory && state._allDefinedCategories[sLinkedCategory],
             sCookieTableData = section.cookieTable,
@@ -313,6 +315,15 @@ export const createBTSModal = (api, createMainContainer) => {
             addClassPm(sDesc, 'section-desc');
             sDesc.innerHTML = sDescriptionData;
             appendChild(sDescContainer, sDesc);
+
+            if (sImage) {
+                var imgElement = createNode('img');
+                imgElement.src = sImage;
+                imgElement.style.margin = '0 auto';
+                imgElement.style.width = '150px';
+                imgElement.style.height = '150px';
+                appendChild(sDescContainer, imgElement);
+            }
         }
 
         if (sIsExpandableToggle) {
